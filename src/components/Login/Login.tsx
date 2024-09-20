@@ -1,5 +1,3 @@
-// src/components/Login/Login.tsx
-
 import React, { useState } from 'react';
 import './Login.css';
 import { LoginService } from './Login.service';
@@ -8,15 +6,17 @@ import { LoginProps } from './Login.types';
 const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
+      setError(null); // Clear previous errors
       await LoginService(username, password);
       onLoginSuccess();
     } catch (error) {
       console.error('Login failed:', error);
-      // Handle login failure (e.g., show an error message)
+      setError('Invalid username or password'); // Set error message
     }
   };
 
@@ -43,6 +43,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             required
           />
         </div>
+        {error && <p className="error-message">{error}</p>} {/* Show error if login fails */}
         <button type="submit">Login</button>
       </form>
     </div>
