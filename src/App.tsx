@@ -1,33 +1,39 @@
 // src/App.tsx
+// src/App.tsx
+import './App.css'; // Make sure this line is present
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
+import Header from './components/Common/Header/Header';
+import Footer from './components/Common/Footer/Footer';
 
 const App: React.FC = () => {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
-  const handleLoginSuccess = () => {
-    console.log('Login successful!');
-    navigate('/dashboard'); // Redirect to Dashboard on successful login
+  const handleLoginSuccess = (token: string) => {
+    console.log('Login successful! Token:', token);
+    navigate('/dashboard');
   };
 
   return (
     <div className="App">
-      {/* Pass handleLoginSuccess to Login component */}
-      <Login onLoginSuccess={handleLoginSuccess} />
+      <Header />
+      <main className="main-content"> {/* Added main tag */}
+        <Routes>
+          <Route path="/" element={<Login onLoginSuccess={handleLoginSuccess} />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 };
 
-// Root component with Router
 const Root: React.FC = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
+      <App />
     </Router>
   );
 };

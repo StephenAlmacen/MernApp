@@ -1,0 +1,32 @@
+/* src/components/Footer.css */
+
+.footer {
+  background-color: #282c34; /* Match the header */
+  color: white; /* White text */
+  padding: 20px; /* Padding for spacing */
+  text-align: center; /* Center text */
+}
+
+.footer-text {
+  margin: 0; /* Remove default margin */
+}
+
+.footer-nav ul {
+  list-style-type: none; /* Remove bullet points */
+  margin: 10px 0 0; /* Space above the nav */
+  padding: 0; /* Remove default padding */
+}
+
+.footer-nav li {
+  display: inline; /* Display items inline */
+  margin: 0 15px; /* Space between footer links */
+}
+
+.footer-nav a {
+  color: white; /* White link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer-nav a:hover {
+  text-decoration: underline; /* Underline on hover */
+}

@@ -1,0 +1,17 @@
+/* src/index.css or src/App.css */
+
+html, body {
+    height: 100%; /* Full height */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column; /* Stack header, main content, and footer vertically */
+    min-height: 100vh; /* Minimum height of 100% of the viewport */
+  }
+  
+  .main-content {
+    flex: 1; /* Allow main content to grow and take available space */
+  }
+  
