@@ -19,6 +19,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const web_jwt = Cookies.get('web_jwt'); // Get token from cookie\
+    console.log(web_jwt)
     if (web_jwt) {
       navigate('/dashboard'); // Redirect to dashboard if token is present
     }
